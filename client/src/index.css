@@ -1,0 +1,263 @@
+:root {
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: "Raleway", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0 auto;
+  /* overflow: hidden; */
+  height: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  display: flex;
+  /* place-items: center; */
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Raleway', sans-serif;
+  color: #000;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 550;
+}
+
+p {
+  font-size: 16px;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: none;
+    border: 2px solid #ef0b0b;
+    width: 70px;
+    padding: 5px;
+    /* padding-left: 10px; */
+    color: #ef0b0b;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.userform-component-styles {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+}
+
+input {
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 0 5px 0 5px;
+}
+
+
+.title-bar {
+  /* background-color: #d3d3d3; */
+  height: 7vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 5px;
+  font-weight: 500;
+}
+
+.v-form {
+  padding: 20px;
+}
+
+
+@media (min-width: 768px) {
+  .content {
+    margin-left: 200px;
+    /* Adjust according to sidebar width */
+  }
+}
+
+.panel-header {
+  padding-left: 15px;
+  padding-right: 12px;
+  border: 0.5px solid #cecece;
+  background-color: #eee;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.panel-footer {
+  padding-left: 15px;
+  padding-right: 12px;
+  border: 0.5px solid #cecece;
+  background-color: #eee;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 35px;
+  font-size: 14px;
+}
+
+.panel-style {
+  /* border: 0.5px solid #cecece; */
+  font-family: 'Raleway', sans-serif;
+  /* border-radius: 10px; */
+  /* font-size: 14px; */
+}
+
+.panel-style-table {
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+
+}
+
+.panel-title {
+  width: 30%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+}
+
+.panel-body {
+  width: 70%;
+  font-size: 14px;
+}
+
+.img-container {
+  border: 0.5px solid #cecece;
+  border-radius: 15px;
+  height: 220px;
+}
+
+.custom-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 10px 20px; */
+  background-color: white;
+  color: #000;
+  border: 0.5px solid #f10001;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 80px;
+  height: 25px;
+}
+
+.button-text {
+  flex-grow: 1;
+  /* This makes the text take up most of the width */
+  text-align: left;
+  margin-right: 10px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.icon-container {
+  background-color:#f10001;
+  padding: 5px;
+  /* border-radius: 20%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 100%;
+  width: 25px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.button-icon {
+  color: white;
+  height: 6px;
+}
+
+.details-style {
+  padding: 10px;
+}
+
+.input-details-style {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.info-details-style {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.asset-details-style {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+ }
+ 
+ /* Hide scrollbar for Firefox */
+ .hide-scrollbar {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+ }
+ 
