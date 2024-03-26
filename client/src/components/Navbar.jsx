@@ -5,7 +5,7 @@ import React from 'react'
 function Navbar({isOpen, toggleSidebar}) {
   return (
     <Box bg="white.500" w="100vw" color="black" display="flex" alignItems="center" justifyContent="left">
-      <Flex justify="space-between" p={{ base: "2", md: "4" }} alignItems="center">
+      {/* <Flex justify="space-between" p={{ base: "2", md: "4" }} alignItems="center">
         {isOpen ? (
           <IconButton
             aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
@@ -33,7 +33,7 @@ function Navbar({isOpen, toggleSidebar}) {
             }}
           />
         )}
-      </Flex>
+      </Flex> */}
     </Box>
   )
 }

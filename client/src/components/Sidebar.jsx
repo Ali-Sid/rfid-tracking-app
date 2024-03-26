@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       overflowX="hidden"
       transition="width 0.3s ease"
     >
-      <Flex justify="space-between" p="4" alignItems="center">
+      <Flex justify="space-between" p="4" alignItems="center" >
         {isOpen ? (
           <IconButton
             aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
@@ -39,7 +39,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               _focus={{
                 boxShadow: "none",
                 border: "none",
-                outline: "none", // Remove the default focus outline
+                // outline: "none", // Remove the default focus outline
               }}
               _hover={{
                 boxShadow: "none", // Remove shadow on hover
@@ -49,11 +49,37 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             onClick={toggleSidebar}
             focusBorderColor="transparent"
             focusBorderWidth="0"
+            focusVisible="false"
           />
         ) : (
           <IconButton
-            aria-label="Open sidebar"
-            icon={<Icon color="#fff" border="none" backgroundColor="#f10001"
+            aria-label="Open sidebar" border="none"
+            _focus={{
+              boxShadow: "none",
+              border: "none",
+              outline: "none", // Remove the default focus outline
+            }}
+            _hover={{
+              boxShadow: "none", // Remove shadow on hover
+              border: "none", // Remove border on hover
+            }}
+            _active={{
+              boxShadow: "none", // Remove active shadow
+              border: "none", // Ensure no border on active
+            }}
+            _disabled={{
+              boxShadow: "none", // Remove disabled shadow
+              border: "none", // Ensure no border on disabled
+            }}
+            _before={{
+              boxShadow: "none", // Remove before pseudo-element shadow
+              border: "none", // Ensure no border on before pseudo-element
+            }}
+            _after={{
+              boxShadow: "none", // Remove after pseudo-element shadow
+              border: "none", // Ensure no border on after pseudo-element
+            }}
+            icon={<Icon color="#fff" border="none"
               _focus={{
                 boxShadow: "none",
                 border: "none",
@@ -63,10 +89,27 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 boxShadow: "none", // Remove shadow on hover
                 border: "none", // Remove border on hover
               }}
+              _active={{
+                boxShadow: "none", // Remove active shadow
+                border: "none", // Ensure no border on active
+              }}
+              _disabled={{
+                boxShadow: "none", // Remove disabled shadow
+                border: "none", // Ensure no border on disabled
+              }}
+              _before={{
+                boxShadow: "none", // Remove before pseudo-element shadow
+                border: "none", // Ensure no border on before pseudo-element
+              }}
+              _after={{
+                boxShadow: "none", // Remove after pseudo-element shadow
+                border: "none", // Ensure no border on after pseudo-element
+              }}
               focusBorderColor="transparent"
               focusBorderWidth="0"
               as={HamburgerIcon} />}
             onClick={toggleSidebar}
+            focusVisible="false"
           />
 
 

@@ -62,8 +62,12 @@ import styled from '@emotion/styled';
 
 
 function Details() {
-  const { selectedAsset, setSelectedAsset, addingNewAsset, setAddingNewAsset, newAsset, setNewAsset } = useContext(SelectedAssetContext);
+  const { selectedAsset, setSelectedAsset, addingNewAsset, setAddingNewAsset } = useContext(SelectedAssetContext);
   const [assetDetails, setAssetDetails] = useState({});
+  const [newAsset, setNewAsset] = useState({ assetCode: '', assetName: '', description: '' })
+  const [assetCodeField, setAssetCodeField] = useState('')
+  const [assetNameField, setAssetNameField] = useState('')
+  const [descriptionField, setDescriptionField] = useState('')
 
   const CustomTextField = styled(TextField)({
     '& .MuiInputLabel-root': {
@@ -109,9 +113,9 @@ function Details() {
             <h2>Asset Info</h2>
           </div>
           <div className='input-details-style'>
-            <CustomTextField id="standard-basic" label="Asset Code" variant="standard" name="assetCode" value={newAsset.assetCode} onChange={handleInputChange} fullWidth />
-            <CustomTextField id="standard-basic" label="Asset Name" variant="standard" name="assetName" value={newAsset.assetName} onChange={handleInputChange} fullWidth />
-            <CustomTextField id="standard-basic" label="Description" variant="standard" name="assetDescription" value={newAsset.assetDescription} onChange={handleInputChange} fullWidth />
+            <CustomTextField id="standard-basic" label="Asset Code" variant="standard" name="assetCode" value={assetCodeField} onChange={(e) => setAssetCodeField(e.target.value)} fullWidth />
+            <CustomTextField id="standard-basic" label="Asset Name" variant="standard" name="assetName" value={assetNameField} onChange={(e) => setAssetNameField(e.target.value)} fullWidth />
+            <CustomTextField id="standard-basic" label="Description" variant="standard" name="description" value={descriptionField} onChange={(e) => setDescriptionField(e.target.value)} fullWidth />
             {/* <div style={{ marginTop: "20px" }}>
               <Button colorScheme="red" mr={3} onClick={handleAddAsset}>
                 Add
