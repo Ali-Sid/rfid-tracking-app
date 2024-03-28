@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Flex, IconButton, VStack, Text, useBreakpointValue, Icon } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import { Link as ReactRouterLink } from 'react-router-dom'
+import { Link as ChakraLink } from '@chakra-ui/react'
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   // const [isOpen, setIsOpen] = useState(false);
@@ -47,9 +49,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               }}
               as={HamburgerIcon} />}
             onClick={toggleSidebar}
-            focusBorderColor="transparent"
-            focusBorderWidth="0"
-            focusVisible="false"
+            focusbordercolor="transparent"
+            focusborderwidth="0"
+            focusvisible="false"
           />
         ) : (
           <IconButton
@@ -105,18 +107,19 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 boxShadow: "none", // Remove after pseudo-element shadow
                 border: "none", // Ensure no border on after pseudo-element
               }}
-              focusBorderColor="transparent"
-              focusBorderWidth="0"
+              focusbordercolor="transparent"
+              focusborderwidth="0"
               as={HamburgerIcon} />}
             onClick={toggleSidebar}
-            focusVisible="false"
+            focusvisible="false"
           />
 
 
         )}
       </Flex>
       <VStack spacing="4" p="4" align="start" w={sidebarContentWidth}>
-        <Text fontSize="xl">Items</Text>
+        <ChakraLink as={ReactRouterLink} to='/'>Items</ChakraLink>
+        <ChakraLink as={ReactRouterLink} to='/catalogue'>Catalogue</ChakraLink>
       </VStack>
     </Flex>
   );

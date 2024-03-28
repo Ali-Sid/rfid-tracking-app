@@ -10,7 +10,7 @@ import CancelButton from '../reusable-assets/CancelButton';
 
 
 const ListPanel = () => {
-  const { setSelectedAsset, setAddingNewAsset } = useContext(SelectedAssetContext);
+  const { setSelectedAsset, setAddingNewAsset } = useContext(CatalogueContext);
   const { setEditingAsset } = useContext(SelectedAssetContext);
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState('');
@@ -67,13 +67,14 @@ const ListPanel = () => {
         console.error('Error fetching title:', error);
       });
 
-    axios.get('http://localhost:3000/item-list')
+    // Adjust the endpoint to fetch from the category list table
+    axios.get('http://localhost:3000/get-category-list') // Use the correct endpoint
       .then(response => {
         console.log(response.data)
         setItems(response.data);
       })
       .catch(error => {
-        console.error('Error fetching item list:', error);
+        console.error('Error fetching category list:', error);
       });
   }, []);
 

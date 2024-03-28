@@ -127,7 +127,7 @@ function Details() {
         </>
       ) : (
         <>
-          {selectedAsset ? (
+          {selectedAsset && (
             <>
               <h2 style={{marginTop: "-10px"}}>Asset Details</h2>
               <hr />
@@ -137,8 +137,6 @@ function Details() {
               {/* <p>Category: {assetDetails.Category}</p> */}
               </div>
             </>
-          ) : (
-            <p>No asset selected</p>
           )}
         </>
       )}

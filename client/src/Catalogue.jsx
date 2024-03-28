@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
-import UserForm from './components/UserForm';
-import UserTable from './components/UserTable';
-import Dashboard from './components/dashboard/Dashboard';
+import Dashboard from './components/ItemCatalogue/Dashboard';
 import Navbar from './components/Navbar';
 
-const Home = () => {
+const Catalogue = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -29,4 +27,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default Catalogue;

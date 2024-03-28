@@ -43,7 +43,7 @@ h1 {
 
 h2 {
   font-size: 18px;
-  font-weight: 550;
+  font-weight: 350;
 }
 
 p {
@@ -203,6 +203,10 @@ input {
   height: 25px;
 }
 
+.custom-button:hover {
+  border: 1px solid rgb(251, 82, 82);
+}
+
 .button-text {
   flex-grow: 1;
   /* This makes the text take up most of the width */
@@ -224,6 +228,13 @@ input {
   width: 25px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+}
+
+.cancel-button {
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid#575757;
+  color: #575757;
 }
 
 .button-icon {
