@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SelectedAssetProvider } from "../../SelectedAssetContext";
 import ListPanel from "./ListPanel"
 import MainContent from "./MainContent"
-import { HomeProvider } from "../../HomeContext";
+// import { SelectedAssetProvider } from "../../SelectedAssetContext";
 
 const Dashboard = () => {
 
@@ -13,12 +13,12 @@ const Dashboard = () => {
 
     return (
         <div style={{ display: "flex", flexDirection: "row", width: "100%", overflow: "hidden", gap: "10px" }}>
-            <HomeProvider value={{ selectedAsset, setSelectedAsset, addingNewAsset, setAddingNewAsset, newItem, setNewItem }}>
+            <SelectedAssetProvider value={{ selectedAsset, setSelectedAsset, addingNewAsset, setAddingNewAsset, newItem, setNewItem }}>
                 <div style={{ width: "70%" }}><ListPanel /></div>
                 <div style={{ width: "30%" }}><MainContent /></div>
-            </HomeProvider>
-            <SelectedAssetProvider>
             </SelectedAssetProvider>
+            {/* <SelectedAssetProvider>
+            </SelectedAssetProvider> */}
         </div>
     )
 }

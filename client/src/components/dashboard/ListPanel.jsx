@@ -10,8 +10,8 @@ import CancelButton from '../reusable-assets/CancelButton';
 
 
 const ListPanel = () => {
-  const { setSelectedAsset, setAddingNewAsset } = useContext(SelectedAssetContext);
-  const { setEditingAsset } = useContext(SelectedAssetContext);
+  // const { setSelectedAsset, setAddingNewAsset } = useContext(SelectedAssetContext);
+  const { setEditingAsset, setSelectedAsset } = useContext(SelectedAssetContext);
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();

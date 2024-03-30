@@ -2,16 +2,17 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AddButton from '../reusable-assets/AddButton'
 // import { Table, Thead, Tbody, Tr, Th, Td, Box } from '@chakra-ui/react';
-import SelectedAssetContext from '../../SelectedAssetContext';
+// import SelectedAssetContext from '../../SelectedAssetContext';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, Input, useDisclosure, useMediaQuery, Box, Flex } from '@chakra-ui/react';
 import { Table, TableHead, TableBody, TableRow, TableCell, TableSortLabel, TextField } from '@mui/material';
 import SaveButton from '../reusable-assets/SaveButton';
 import CancelButton from '../reusable-assets/CancelButton';
+import CatalogueContext from '../../CatalogueContext';
 
 
 const ListPanel = () => {
   const { setSelectedAsset, setAddingNewAsset } = useContext(CatalogueContext);
-  const { setEditingAsset } = useContext(SelectedAssetContext);
+  // const { setEditingAsset } = useContext(SelectedAssetContext);
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -53,7 +54,7 @@ const ListPanel = () => {
 
   // Function to handle adding a new item
   const handleAddNewAsset = () => {
-    // setAddingNewAsset(true); // Set state to indicate a new item is being added
+    setAddingNewAsset(true); // Set state to indicate a new item is being added
     onOpen()
   };
 

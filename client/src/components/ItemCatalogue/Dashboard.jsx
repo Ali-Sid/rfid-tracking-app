@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { SelectedAssetProvider } from "../../SelectedAssetContext";
+// import { SelectedAssetProvider } from "../../SelectedAssetContext";
 import ListPanel from "./ListPanel"
 import MainContent from "./MainContent"
 import { CatalogueProvider } from "../../CatalogueContext";
+// import { HomeProvider } from "../../HomeContext";
 
 const Dashboard = () => {
 
