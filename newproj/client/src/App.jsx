@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import { Select, MenuItem, FormControl, InputLabel, Box, Button, Table, TableHead, TableRow, TableCell, TableSortLabel, TableBody, DialogActions, TextField, DialogContent, DialogTitle, Dialog, IconButton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -17,6 +18,11 @@ function App() {
   const [itemCode, setItemCode] = useState("");
   const [itemName, setItemName] = useState("");
   const [numberOfEntries, setNumberOfEntries] = useState(1);
+  const navigate = useNavigate();
+
+  const handleRowClick = (itemCode) => {
+    navigate(`/category-list/${itemCode}`);
+  };
 
   const handleOpen = (item) => {
     setSelectedItem(item);
@@ -30,11 +36,13 @@ function App() {
   };
 
   const generateEntries = (itemCode, itemName, numberOfEntries) => {
-    const baseCode = itemCode.split('-')[0];
+    // const baseCode = itemCode.split('-')[0];
     const entries = [];
 
     for (let i = 1; i <= numberOfEntries; i++) {
-      const categoryCode = `${baseCode}-${i}`;
+      // const categoryCode = `${baseCode}-${i}`;
+      let categoryCode = i.toString().padStart(6, '0');
+    // numbers.push(paddedNumber);
       const timestamp = new Date().toISOString();
       entries.push({ itemCode, itemName, categoryCode, timestamp });
     }
@@ -150,7 +158,7 @@ function App() {
       }}
         boxSizing='borderBox'>
         <div>
-          <h2>Title</h2>
+          <h2>Item Master</h2>
         </div>
         <div style={{ height: "100%", width: "100%", maxHeight: "calc(100vh - 150px)", overflowY: "auto", padding: "20px" }}>
           <Table sx={{ boxShadow: "0 3px 10px rgba(0, 0, 0, 0.2)" }}>
@@ -196,7 +204,7 @@ function App() {
             </TableHead>
             <TableBody>
               {sortedAssets.map((item, index) => (
-                <TableRow key={index} onClick={() => handleOpen(item)} style={{
+                <TableRow key={index} onClick={() => handleRowClick(item.item_code)} style={{
                   backgroundColor: selectedRowId === item.item_id ? '#f5f5f5' : 'transparent',
                   color: selectedRowId === item.item_id ? 'white' : 'black',
                   cursor: 'pointer'
