@@ -297,7 +297,7 @@ app.post('/category-list', async (req, res) => {
     try {
         for (const entry of entries) {
             const { itemCode, itemName, categoryCode, timestamp } = entry;
-            const query = 'INSERT INTO category_list (item_code, item_name, category_code, timestamp) VALUES (?, ?, ?, ?)';
+            const query = 'INSERT INTO category_list (ItemCode, ItemName, CategoryCode, event_timestamp) VALUES (?, ?, ?, ?)';
             await db.query(query, [itemCode, itemName, categoryCode, timestamp]);
         }
         res.status(201).send({ message: 'Entries added successfully' });
@@ -306,6 +306,20 @@ app.post('/category-list', async (req, res) => {
         res.status(500).send({ message: 'Server error' });
     }
 });
+
+// Endpoint to fetch item data by item code
+app.get('/category-list', async (req, res) => {
+    try {
+       const item = await item.findOne({ itemCode: req.params.itemCode });
+       if (!item) {
+         return res.status(404).json({ message: 'Item not found' });
+       }
+       res.json(item);
+    } catch (error) {
+       console.error('Error fetching item:', error);
+       res.status(500).json({ message: 'Server error' });
+    }
+   });
 
 
 // Endpoint to fetch the details of category-list
