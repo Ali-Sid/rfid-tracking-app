@@ -308,18 +308,19 @@ app.post('/category-list', async (req, res) => {
 });
 
 // Endpoint to fetch item data by item code
-app.get('/category-list', async (req, res) => {
+app.get('/category-list/:itemCode', async (req, res) => {
+    const { itemCode } = req.params;
     try {
-       const item = await item.findOne({ itemCode: req.params.itemCode });
-       if (!item) {
-         return res.status(404).json({ message: 'Item not found' });
-       }
-       res.json(item);
+        const [rows] = await db.query('SELECT * FROM category_list WHERE ItemCode = ?', [itemCode]);
+        if (rows.length === 0) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
+        res.json(rows);
     } catch (error) {
-       console.error('Error fetching item:', error);
-       res.status(500).json({ message: 'Server error' });
+        console.error('Error fetching item:', error);
+        res.status(500).json({ message: 'Server error' });
     }
-   });
+});
 
 
 // Endpoint to fetch the details of category-list
