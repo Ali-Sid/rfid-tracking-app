@@ -23,6 +23,9 @@ const DisplayData = () => {
     if (!data) {
         return <div>Loading...</div>;
     }
+    if (data.error) {
+        return <div>Error: {data.error}</div>;
+    }
 
     return (
         <div>

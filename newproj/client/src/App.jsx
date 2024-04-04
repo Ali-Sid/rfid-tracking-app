@@ -215,7 +215,7 @@ function App() {
                   <TableCell>{item.item_name}</TableCell>
                   <TableCell>{formatDate(item.item_create_date)}</TableCell>
                   <TableCell>
-                    <IconButton onClick={() => handleOpen(item)}>
+                    <IconButton onClick={(e) => { e.stopPropagation(); handleOpen(item)}}>
                       <EventRepeatIcon />
                     </IconButton>
                   </TableCell>
