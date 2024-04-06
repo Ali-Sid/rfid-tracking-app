@@ -11,6 +11,7 @@ const DisplayData = () => {
             try {
                 const response = await fetch(`http://localhost:3001/category-list/${itemCode}`);
                 const newData = await response.json();
+                console.log('Received data:', newData); // Log received data
                 setData(newData);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -29,10 +30,25 @@ const DisplayData = () => {
 
     return (
         <div>
-            <h3>{data.itemName}</h3>
-            <p>{data.itemCode}</p>
-            <p>{data.categoryCode}</p>
-            <p>{data.timestamp}</p>
+            <h3>{data[0].ItemName} - Category List</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category Code</th>
+                        <th>Item Name</th>
+                        <th>Event Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((entry) => (
+                        <tr key={entry.id}>
+                            <td>{entry.CategoryCode}</td>
+                            <td>{entry.ItemName}</td>
+                            <td>{entry.event_timestamp}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }

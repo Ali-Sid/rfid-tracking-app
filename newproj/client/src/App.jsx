@@ -18,6 +18,9 @@ function App() {
   const [itemCode, setItemCode] = useState("");
   const [itemName, setItemName] = useState("");
   const [numberOfEntries, setNumberOfEntries] = useState(1);
+  const [price, setPrice] = useState('')
+  const [dateInput, setDateInput] = useState(null)
+  const [description, setDescription] = useState('')
   const navigate = useNavigate();
 
   const handleRowClick = (itemCode) => {
@@ -42,7 +45,7 @@ function App() {
     for (let i = 1; i <= numberOfEntries; i++) {
       // const categoryCode = `${baseCode}-${i}`;
       let categoryCode = i.toString().padStart(6, '0');
-    // numbers.push(paddedNumber);
+      // numbers.push(paddedNumber);
       const timestamp = new Date().toISOString();
       entries.push({ itemCode, itemName, categoryCode, timestamp });
     }
@@ -67,7 +70,7 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:3000/label')
+    axios.get('http://localhost:3001/label')
       .then(response => {
         setTitle(response.data.name);
       })
@@ -83,14 +86,16 @@ function App() {
 
     fetchItems();
 
-    axios.get('http://localhost:3001/category-list')
-      .then(response => {
-        setCategoryList(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching category list:', error);
-      });
-  }, []);
+    if (itemCode) {
+      axios.get('http://localhost:3001/category-list')
+        .then(response => {
+          setCategoryList(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching category list:', error);
+        });
+    }
+  }, [itemCode]);
 
   const handleInputChange = (e) => {
     setNewItem({ ...newItem, [e.target.name]: e.target.value });
@@ -110,7 +115,14 @@ function App() {
     if (name === "itemCode") setItemCode(value);
     if (name === "itemName") setItemName(value);
     if (name === "numberOfEntries") setNumberOfEntries(parseInt(value));
+    if (name === "unitPrice") setPrice(parseInt(value));
+    if (name === "dateInput") setDateInput(value);
+    if (name === "description") setDescription(value);
   };
+
+  const handleDateChange = (date) => {
+    setDateInput(date);
+ };
 
   const createSortHandle = (property) => (event) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -215,7 +227,7 @@ function App() {
                   <TableCell>{item.item_name}</TableCell>
                   <TableCell>{formatDate(item.item_create_date)}</TableCell>
                   <TableCell>
-                    <IconButton onClick={(e) => { e.stopPropagation(); handleOpen(item)}}>
+                    <IconButton onClick={(e) => { e.stopPropagation(); handleOpen(item) }}>
                       <EventRepeatIcon />
                     </IconButton>
                   </TableCell>
@@ -242,6 +254,36 @@ function App() {
             fullWidth
             value={itemName}
             disabled // Disable editing
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Unit Price"
+            type="number"
+            fullWidth
+            name="unitPrice"
+            value={price}
+            onChange={handleChange}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Date"
+            type="datetime"
+            fullWidth
+            name="dateInput"
+            value={dateInput}
+            onChange={handleChange}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Description"
+            type="textfield"
+            fullWidth
+            name="description"
+            value={description}
+            onChange={handleChange}
           />
           <TextField
             autoFocus
