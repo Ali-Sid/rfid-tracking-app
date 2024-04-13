@@ -359,6 +359,24 @@ app.put('/category-list/:id', async (req, res) => {
     }
 });
 
+// Endpoint to fetch the count of items by item code
+app.get('/item-count/:itemCode', async (req, res) => {
+    const { itemCode } = req.params;
+    try {
+        const query = 'SELECT COUNT(*) as count FROM category_list WHERE item_code = ?';
+        const [rows] = await db.query(query, [itemCode]);
+        if (rows.length > 0) {
+            res.json({ count: rows[0].count });
+        } else {
+            res.status(404).send({ message: 'Item not found' });
+        }
+    } catch (error) {
+        console.error('Error fetching item count:', error);
+        res.status(500).send({ message: 'Server error' });
+    }
+});
+
+
 
 
 
