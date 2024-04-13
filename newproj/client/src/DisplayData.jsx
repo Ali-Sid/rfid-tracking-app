@@ -1,3 +1,4 @@
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
@@ -31,24 +32,24 @@ const DisplayData = () => {
     return (
         <div>
             <h3>{data[0].ItemName} - Category List</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Category Code</th>
-                        <th>Item Name</th>
-                        <th>Event Timestamp</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <Table sx={{ boxShadow: "0 3px 10px rgba(0, 0, 0, 0.2)" }}>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Category Code</TableCell>
+                        <TableCell>Item Name</TableCell>
+                        <TableCell>Event Timestamp</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                     {data.map((entry) => (
-                        <tr key={entry.id}>
-                            <td>{entry.CategoryCode}</td>
-                            <td>{entry.ItemName}</td>
-                            <td>{entry.event_timestamp}</td>
-                        </tr>
+                        <TableRow key={entry.id}>
+                            <TableCell>{entry.CategoryCode}</TableCell>
+                            <TableCell>{entry.ItemName}</TableCell>
+                            <TableCell>{entry.event_timestamp}</TableCell>
+                        </TableRow>
                     ))}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
         </div>
     )
 }
